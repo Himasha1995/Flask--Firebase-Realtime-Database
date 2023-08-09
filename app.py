@@ -25,7 +25,9 @@ def basic():
 		if request.form['submit'] == 'add':
 
 			name = request.form['name']
+			email = request.form['email']
 			db.child("todo").push(name)
+			db.child("todo").push(email)
 			todo = db.child("todo").get()
 			to = todo.val()
 			return render_template('index.html', t=to.values())
